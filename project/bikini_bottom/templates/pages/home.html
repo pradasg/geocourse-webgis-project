@@ -17,6 +17,7 @@
 
 {% block body %}
     <h1>Testing Inheritance HTML</h1>
+    <a href="{% url 'facility_form_add' %}" class="btn btn-primary">Add Fasilitas</a>
     <div id="peta">TAMPILAN PETA </div>
 
     <script>
@@ -26,5 +27,23 @@
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(peta);
+
+fetch('{% url "home_api" %}')
+      .then(response => response.json())
+      .then(function(json){
+        L.geoJSON(json, {
+          onEachFeature: function(feature, layer){
+            layer.bindPopup(
+              `
+              <h5>${feature.properties.name}</h5>
+              <ul>
+                <li>${feature.properties.price}</li>  
+                <li>${feature.properties.price_unit}</li>  
+              </ul>
+              `
+            )
+          }
+        }).addTo(peta)
+      })
     </script>
 {% endblock %}
