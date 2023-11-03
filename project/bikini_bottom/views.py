@@ -33,9 +33,11 @@ def custom_map_api(request):
             'geometry': ast.literal_eval(item.location.json),
             'properties': {
                 'nama': item.name,
+                'status': item.status,
                 'tipe': item.types,
                 'harga': item.price,
-                'satuan harga': item.price_unit
+                'satuan harga': item.price_unit,
+                'buka': item.open,
         }
      }
         features['features'].append(feature)
@@ -59,3 +61,9 @@ def facility_form_add(request):
     }
     
     return render(request, 'pages/facility_add.html', context)
+
+def facility_list(request):
+    context = {
+        'data': Facility.objects.all
+    }
+    return render(request, 'pages/facility_list.html', context)

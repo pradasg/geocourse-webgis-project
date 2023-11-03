@@ -7,6 +7,7 @@ class FacilityForm(forms.ModelForm):
         model = Facility
         fields = {
             'name',
+            'status',
             'types',
             'location',
             'price',
