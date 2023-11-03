@@ -1,0 +1,12 @@
+{% extends 'context/base.html' %}
+
+{% block title %}
+    Logged Out
+{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+    <h1>Anda telah logged out</h1>
+    <p>Silakan login kembali <a href="{% url 'login' %}">di sini</a></p>
+{% endblock %}

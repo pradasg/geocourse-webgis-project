@@ -1,0 +1,17 @@
+{% extends 'context/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+    <h1>Silakan Masuk</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
