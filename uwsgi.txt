@@ -1,0 +1,28 @@
+[uwsgi]
+
+# full path to Django project's root directory
+chdir            = /home/webgis-project/geocourse-webgis-project/project
+
+# Django's wsgi file
+module           = project.wsgi
+
+# full path to python virtual env
+home             = /home/webgis-project/geo-env
+
+# enable uwsgi master process
+master          = true
+
+# maximum number of worker processes
+processes       = 10
+
+# the socket (use the full path to be safe
+socket          = /home/webgis-project/bikinibottom.sock
+
+# socket permissions
+chmod-socket    = 666
+
+# clear environment on exit
+vacuum          = true
+
+# daemonize uwsgi and write messages into given log
+daemonize       = /home/webgis-project/uwsgi-bikinibottom.log

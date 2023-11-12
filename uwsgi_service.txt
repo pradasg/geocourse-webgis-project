@@ -1,0 +1,11 @@
+[Unit]
+Description=uwsgi emperor for bikinibottom website
+After=network.target
+
+[Service]
+User=pradagiff
+Restart=always
+ExecStart=/home/webgis-project/geo-env/bin/uwsgi --emperor /home/webgis-project/vassals --uid www-data --gid www-data
+
+[Install]
+WantedBy=multi-user.target
